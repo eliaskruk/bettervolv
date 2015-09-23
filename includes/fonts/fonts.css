@@ -1,0 +1,60 @@
+@font-face {
+    font-family: 'volvo_broad_proregular';
+    src: url('volvobroadpro.eot');
+    src: url('volvobroadpro.eot?#iefix') format('embedded-opentype'),
+         url('volvobroadpro.woff2') format('woff2'),
+         url('volvobroadpro.woff') format('woff'),
+         url('volvobroadpro.ttf') format('truetype'),
+         url('volvobroadpro.svg#volvo_broad_proregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'volvo_sans_probold';
+    src: url('volvosanspro-bold.eot');
+    src: url('volvosanspro-bold.eot?#iefix') format('embedded-opentype'),
+         url('volvosanspro-bold.woff2') format('woff2'),
+         url('volvosanspro-bold.woff') format('woff'),
+         url('volvosanspro-bold.ttf') format('truetype'),
+         url('volvosanspro-bold.svg#volvo_sans_probold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'volvo_sans_prolight';
+    src: url('volvosanspro-light.eot');
+    src: url('volvosanspro-light.eot?#iefix') format('embedded-opentype'),
+         url('volvosanspro-light.woff2') format('woff2'),
+         url('volvosanspro-light.woff') format('woff'),
+         url('volvosanspro-light.ttf') format('truetype'),
+         url('volvosanspro-light.svg#volvo_sans_prolight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'volvo_sans_promedium';
+    src: url('volvosanspro-medium.eot');
+    src: url('volvosanspro-medium.eot?#iefix') format('embedded-opentype'),
+         url('volvosanspro-medium.woff2') format('woff2'),
+         url('volvosanspro-medium.woff') format('woff'),
+         url('volvosanspro-medium.ttf') format('truetype'),
+         url('volvosanspro-medium.svg#volvo_sans_promedium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}

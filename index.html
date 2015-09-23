@@ -1,0 +1,104 @@
+<html>
+    <head>
+        <title>Trivia Los Pumas</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+        <script src="jquery-1.11.1.min.js"></script>
+        <script src="mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+        <script src="phonegap.js" type="text/javascript"></script>
+
+        <link href="includes/swiper/swiper.min.css" rel="stylesheet" type="text/css"/>
+        <link href="includes/styles.css" rel="stylesheet" type="text/css"/>
+
+        <script src="includes/swiper/swiper.jquery.min.js" type="text/javascript"></script>
+        <script src="includes/dbcontroller.js" type="text/javascript"></script>
+        <script src="includes/syncs.js" type="text/javascript"></script>
+        <script src="includes/functions.js" type="text/javascript"></script>
+        <script src="includes/init.js" type="text/javascript"></script>
+
+    </head>
+    <body>
+        <div data-role="page" id="home">
+            <div data-role="header" data-position="inline">
+                <div class="header-content">
+                    <h1>VOLVO CONSTRUCTION EQUIPMENT</h1>
+                    <img class="ui-btn-right logo" src="imagenes/icon.png">
+                </div>
+            </div>
+            <div data-role="content">
+                <a class="ui-btn m-button">
+                    <div class="maq-content" style="background-image: url('imagenes/A35F_A40F.jpg')">
+                        <h3>A35F / A40F</h3>
+                        <span class="separador"></span>
+                    </div>
+                </a>
+                <a class="ui-btn m-button">
+                    <div class="maq-content" style="background-image: url('imagenes/EC220D.jpg')">
+                        <h3>EC220D</h3>
+                    </div>
+                </a>
+                <a class="ui-btn m-button">
+                    <div class="maq-content" style="background-image: url('imagenes/PL3005D.jpg')">
+                        <h3>PL3005D</h3>
+                        <span class="separador"></span>
+                    </div>
+                </a>
+                <a class="ui-btn m-button">
+                    <div class="maq-content" style="background-image: url('imagenes/L150G_L180G_L220G.jpg')">
+                        <h3>L150G / L180G / L220G</h3>
+                    </div>
+                </a>
+            </div>
+            <div data-role="footer">
+                <a href="#galeria">VIDEOS<span class="separador"></span></a>
+                <a href="#home2">BROCHURE</a>
+            </div>
+        </div>
+
+
+        <div data-role="page" id="galeria">
+            <div data-role="header" data-position="inline">
+                <div class="header-content">
+                    <h1>A35F / A40F</h1>
+                    <img class="ui-btn-right logo" src="imagenes/icon.png">
+                </div>
+            </div>
+            <div data-role="content">
+                <!-- Slider main container -->
+                <div class="swiper-container">
+                    <!-- Additional required wrapper -->
+                    <div class="swiper-wrapper">
+                        <!-- Slides -->
+                        <div class="swiper-slide">
+                            <img src="assets/A35F - A40F/FOTOS/A35F_A40F_20040924H.tiff" alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="assets/A35F - A40F/FOTOS/ART_A25FtoA40F_HC_OPT_AH85001.jpg" alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="assets/A35F - A40F/FOTOS/ART_A25FtoA40F_OPT_AH42004_001.jpg" alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="assets/A35F - A40F/FOTOS/ART_A25FtoA40F_T_049.jpg" alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="assets/A35F - A40F/FOTOS/ART_A35FFS_A40FFS_OPT_AH_OBW_008.jpg" alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="assets/A35F - A40F/FOTOS/ART_A35FFS_T2_1_11013_01_H.jpg" alt="">
+                        </div>
+                    </div>
+                    
+                    <!-- If we need navigation buttons -->
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+                
+                <a href="#home" class="back"></a>
+            </div>
+        </div>
+    </body>
+</html>

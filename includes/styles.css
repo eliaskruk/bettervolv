@@ -1,0 +1,152 @@
+@import url("fonts/fonts.css");
+
+*{
+    font-family: "volvo_sans_prolight";
+    font-size: 28px;
+    color: #5e5e5e;
+}
+
+.ui-mobile, .ui-mobile body{
+    overflow: hidden;
+}
+.ui-header, .ui-footer{
+    border: none;
+}
+.ui-mobile .ui-page-active {
+    overflow: hidden;
+}
+.ui-content {
+    margin: 0 4%;
+    padding: 0;
+    position: relative;
+}
+.ui-header {
+    padding: 2.5% 4% 1%;
+}
+.header-content {
+    /*margin: 2% 4% 1%;*/
+    border-top: .6em solid #718da3;
+    border-right: 1px solid #ababab;
+    border-left: 1px solid #ababab;
+    border-bottom: 1px solid #ababab;
+    padding: 1.4% 2%;
+    position: relative;
+    overflow: hidden;
+}
+.header-content h1 {
+    margin: 0;
+    font-size: 1.35em;
+    font-family: "volvo_sans_probold";
+    width: 90%;
+    float: left;
+    position: absolute;
+}
+.header-content .logo {
+    width: 7.3%;
+    position: initial;
+    float: right;
+}
+
+a.ui-btn.m-button {
+    width: 50%;
+    float: left;
+    margin: 0 0 1.5%;
+    padding: 0;
+}
+
+.maq-content{
+    background: url("") no-repeat center center / cover transparent;
+    position: relative;
+}
+.maq-content h3{
+    font-family: "volvo_broad_proregular";
+    text-align: left;
+    font-size: 1.6em;
+    margin: 0;
+    padding: 5%;
+    font-weight: 100;
+}
+.maq-content .separador{
+    background: url("../imagenes/separador.png") no-repeat center center / 100% 100% transparent;
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 1px;
+    right: 0;
+    top: 0;
+}
+.ui-footer{
+    padding: 0 4%;
+    margin: 0;
+    overflow: hidden;
+}
+.ui-footer a {
+    width: 50%;
+    float: left;
+    background-color: #718da3;
+    margin: 0;
+    padding: 0;
+    line-height: 2em;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.07em !important;
+}
+.ui-footer a .separador{
+    background-color: #fff;
+    display: block;
+    position: absolute;
+    height: 80%;
+    width: 1px;
+    right: 0;
+    top: 10%;
+}
+
+#galeria .header-content h1 {
+    font-size: 3em;
+    font-family: "volvo_broad_proregular";
+    font-weight: 100;
+}
+#galeria .ui-content{
+    background: url("../imagenes/solapa-fotos.png") no-repeat center center / 100% 100% transparent;
+}
+.back{
+    background: url("../imagenes/volver.png") no-repeat center center / auto 100% transparent;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 3%;
+    height: 10%;
+}
+.swiper-container {
+    width: 90%;
+    height: 95%;
+    margin-left: 8%;
+    margin-top: 1.5%;
+}
+.swiper-slide img {
+    width: 100%;
+    margin-top: 2%;
+}
+.swiper-button-prev {
+    background-image: url("../imagenes/btn-left.png");
+    left: 0;
+}
+.swiper-button-next{
+    background-image: url("../imagenes/btn-right.png");
+    right: 0;
+}
+.swiper-button-disabled{
+    opacity: 0.3;
+}
+.swiper-button-prev, .swiper-button-next {
+    height: 23%;
+    background-size: auto 100%;
+    width: 4.5%;
+    margin-top: -6%;
+}
+@media screen and (max-width: 800px) {
+    * {
+
+    }
+}
