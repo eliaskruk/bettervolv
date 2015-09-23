@@ -13,8 +13,14 @@ $(document).ready(function () {
             nextButton: '.swiper-button-next',
             prevButton: '.swiper-button-prev'
         });
-        
+
 //        $('#galeria .ui-content').css("visibility", "visible");
+    });
+
+    $("#datos-tecnicos").on("pageshow", function (event, ui) {
+        var hc = ($(window).height() - $('#datos-tecnicos .ui-header').height()) * 0.9;
+        $('#datos-tecnicos .ui-content').height(hc);
+
     });
 });
 
