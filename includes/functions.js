@@ -33,11 +33,7 @@ $(document).ready(function () {
 });
 
 
-$(document).on('backbutton', function (event, ui) {
-    event.preventDefault();
-    // YOUR CODE GOES HERE
-    return false;
-});
+document.addEventListener("backbutton", onBackKeyDown, false);
 
 function openPopup(msg) {
     alert(msg);
