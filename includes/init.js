@@ -27,7 +27,7 @@ if (onweb) {
 
 
 function onBackKeyDown() {
-    if ($.mobile.activePage.attr("id") === "registro") {
+    if ($.mobile.activePage.attr("id") === "home") {
         return false;
     } else {
         if (onweb) {
