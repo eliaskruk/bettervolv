@@ -57,7 +57,7 @@ a.ui-btn.m-button {
 }
 
 .maq-content{
-    background: url("") no-repeat center center transparent;
+    background: url("") no-repeat center;
     background-size: auto 100%;
     position: relative;
 }
@@ -71,7 +71,7 @@ a.ui-btn.m-button {
     text-decoration: none;
 }
 .maq-content .separador{
-    background: url("../imagenes/separador.png") no-repeat center center transparent;
+    background: url("../imagenes/separador.png") no-repeat center;
     background-size: 100% 100%;
     display: block;
     position: absolute;
@@ -106,17 +106,21 @@ a.ui-btn.m-button {
     top: 10%;
 }
 
-#galeria .header-content h1 {
+#maquina .header-content h1 {
     font-size: 3em;
     font-family: "volvo_broad_proregular";
     font-weight: 100;
 }
-#galeria .ui-content{
-    background: url("../imagenes/solapa-fotos.png") no-repeat center center transparent;
+#maquina .ui-content.galeria{
+    background: url("../imagenes/solapa-fotos.png") no-repeat center;
+    background-size: 100% 100%;
+}
+#maquina .ui-content.datos-tecnicos{
+    background: url("../imagenes/solapa-datos.png") no-repeat center;
     background-size: 100% 100%;
 }
 .back{
-    background: url("../imagenes/volver.png") no-repeat center center transparent;
+    background: url("../imagenes/volver.png") no-repeat center;
     background-size: auto 100%;
     display: block;
     position: absolute;
@@ -130,6 +134,7 @@ a.ui-btn.m-button {
     height: 95%;
     margin-left: 8%;
     margin-top: 1.5%;
+    display: none;
 }
 .swiper-slide img {
     width: 100%;
@@ -164,12 +169,8 @@ a.ui-btn.m-button {
     width: 100%;
     height: 50%;
 }
-
-#datos-tecnicos .ui-content{
-    background: url("../imagenes/solapa-datos.png") no-repeat center center transparent;
-    background-size: 100% 100%;
-}
-#datos-tecnicos .visor-pdf {
+#maquina .visor-pdf {
+    display: none;
     width: 90%;
     height: 95%;
     margin-left: 8%;
@@ -177,8 +178,14 @@ a.ui-btn.m-button {
     overflow-x: hidden;
     overflow-y: auto;
 }
-#datos-tecnicos .visor-pdf img{
+#maquina .visor-pdf img{
     width: 100%;
+}
+#maquina .galeria .swiper-container{
+    display: block;
+}
+#maquina .datos-tecnicos .visor-pdf{
+    display: block;
 }
 @media screen and (max-width: 800px) {
     * {

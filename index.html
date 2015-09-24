@@ -29,24 +29,24 @@
                 </div>
             </div>
             <div data-role="content">
-                <a class="ui-btn m-button" href="#galeria">
+                <a class="ui-btn m-button" href="#maquina">
                     <div class="maq-content" style="background-image: url('imagenes/A35F_A40F.jpg')">
                         <h3>A35F / A40F</h3>
                         <span class="separador"></span>
                     </div>
                 </a>
-                <a class="ui-btn m-button" href="#galeria">
+                <a class="ui-btn m-button" href="#maquina">
                     <div class="maq-content" style="background-image: url('imagenes/EC220D.jpg')">
                         <h3>EC220D</h3>
                     </div>
                 </a>
-                <a class="ui-btn m-button" href="#galeria">
+                <a class="ui-btn m-button" href="#maquina">
                     <div class="maq-content" style="background-image: url('imagenes/PL3005D.jpg')">
                         <h3>PL3005D</h3>
                         <span class="separador"></span>
                     </div>
                 </a>
-                <a class="ui-btn m-button" href="#galeria">
+                <a class="ui-btn m-button" href="#maquina">
                     <div class="maq-content" style="background-image: url('imagenes/L150G_L180G_L220G.jpg')">
                         <h3>L150G / L180G / L220G</h3>
                     </div>
@@ -59,14 +59,14 @@
         </div>
 
 
-        <div data-role="page" id="galeria">
+        <div data-role="page" id="maquina">
             <div data-role="header" data-position="inline">
                 <div class="header-content">
                     <h1>A35F / A40F</h1>
                     <img class="ui-btn-right logo" src="imagenes/icon.png">
                 </div>
             </div>
-            <div data-role="content">
+            <div data-role="content" class="galeria">
                 <!-- Slider main container -->
                 <div class="swiper-container">
                     <!-- Additional required wrapper -->
@@ -102,32 +102,16 @@
                     <div class="swiper-button-prev"></div>
                     <div class="swiper-button-next"></div>
                 </div>
-
-                <div class="panel-button">
-                    <a href="#galeria"></a>
-                    <a href="#datos-tecnicos"></a>
-                </div>
-
-                <a href="#home" class="back"></a>
-            </div>
-        </div>
-
-        <div data-role="page" id="datos-tecnicos">
-            <div data-role="header" data-position="inline">
-                <div class="header-content">
-                    <h1>A35F / A40F</h1>
-                    <img class="ui-btn-right logo" src="imagenes/icon.png">
-                </div>
-            </div>
-            <div data-role="content">
+                
                 <div class="visor-pdf">
                     <img src="assets/A35F - A40F/DATOS TECNICOS/Ficha-A35F-AA40F.jpg" alt="">
                 </div>
-                
+
                 <div class="panel-button">
-                    <a href="#galeria"></a>
-                    <a href="#datos-tecnicos"></a>
+                    <a class="abrir-galeria" onclick="mostrar_galeria();"></a>
+                    <a class="abrir-datos-tecnicos" onclick="mostrar_datos_tecnicos()">
                 </div>
+
                 <a href="#home" class="back"></a>
             </div>
         </div>

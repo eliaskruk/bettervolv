@@ -2,27 +2,36 @@ $(document).ready(function () {
     var hm = $(window).height() / 3.15;
     $('.maq-content').height(hm);
 
-    $("#galeria").on("pageshow", function (event, ui) {
-//        $('#galeria .ui-content').css("visibility", "hidden");
-        var hc = ($(window).height() - $('#galeria .ui-header').height()) * 0.9;
-        $('#galeria .ui-content').height(hc);
+    $(window).load(function () {
+
+    });
+
+    $("#maquina").on("pagebeforeshow", function (event, ui) {
+        $('#maquina .ui-content').css("visibility", "hidden");
+    });
+
+    $("#maquina").on("pageshow", function (event, ui) {
+        var hc = ($(window).height() - $('#maquina .ui-header').height()) * 0.9;
+        $('#maquina .ui-content').height(hc);
+        $('#maquina .ui-content').css("visibility", "visible");
 
         var mySwiper = new Swiper('.swiper-container', {
             // Optional parameters
+            preloadImages: true,
             paginationClickable: true,
             nextButton: '.swiper-button-next',
             prevButton: '.swiper-button-prev'
         });
 
-//        $('#galeria .ui-content').css("visibility", "visible");
-    });
+        mySwiper.on('init', function () {
+            console.log('slide change start 2');
+        });
 
-    $("#datos-tecnicos").on("pageshow", function (event, ui) {
-        var hc = ($(window).height() - $('#datos-tecnicos .ui-header').height()) * 0.9;
-        $('#datos-tecnicos .ui-content').height(hc);
+
 
     });
 });
+
 
 $(document).on('backbutton', function (event, ui) {
     event.preventDefault();
@@ -35,4 +44,12 @@ function openPopup(msg) {
 }
 function mylog(cosa) {
     console.log(cosa);
+}
+
+function mostrar_galeria(){
+    $("#maquina .ui-content").removeClass("datos-tecnicos").addClass("galeria");
+}
+
+function mostrar_datos_tecnicos(){
+    $("#maquina .ui-content").removeClass("galeria").addClass("datos-tecnicos");
 }
