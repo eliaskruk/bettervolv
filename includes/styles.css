@@ -57,7 +57,8 @@ a.ui-btn.m-button {
 }
 
 .maq-content{
-    background: url("") no-repeat center center / cover transparent;
+    background: url("") no-repeat center center transparent;
+    background-size: auto 100%;
     position: relative;
 }
 .maq-content h3{
@@ -70,7 +71,8 @@ a.ui-btn.m-button {
     text-decoration: none;
 }
 .maq-content .separador{
-    background: url("../imagenes/separador.png") no-repeat center center / 100% 100% transparent;
+    background: url("../imagenes/separador.png") no-repeat center center transparent;
+    background-size: 100% 100%;
     display: block;
     position: absolute;
     height: 100%;
@@ -110,10 +112,12 @@ a.ui-btn.m-button {
     font-weight: 100;
 }
 #galeria .ui-content{
-    background: url("../imagenes/solapa-fotos.png") no-repeat center center / 100% 100% transparent;
+    background: url("../imagenes/solapa-fotos.png") no-repeat center center transparent;
+    background-size: 100% 100%;
 }
 .back{
-    background: url("../imagenes/volver.png") no-repeat center center / auto 100% transparent;
+    background: url("../imagenes/volver.png") no-repeat center center transparent;
+    background-size: auto 100%;
     display: block;
     position: absolute;
     bottom: 0;
@@ -162,7 +166,8 @@ a.ui-btn.m-button {
 }
 
 #datos-tecnicos .ui-content{
-    background: url("../imagenes/solapa-datos.png") no-repeat center center / 100% 100% transparent;
+    background: url("../imagenes/solapa-datos.png") no-repeat center center transparent;
+    background-size: 100% 100%;
 }
 #datos-tecnicos .visor-pdf {
     width: 90%;
