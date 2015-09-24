@@ -24,6 +24,11 @@ $(document).ready(function () {
     });
 });
 
+$(document).on('backbutton', function (e) {
+    e.preventDefault();
+    // YOUR CODE GOES HERE
+});
+
 function openPopup(msg) {
     alert(msg);
 }
