@@ -1,11 +1,7 @@
-$(document).ready(function () {
+function eventListener(){
     var hm = $(window).height() / 3.15;
     $('.maq-content').height(hm);
-
-    $(window).load(function () {
-
-    });
-
+    
     $("#maquina").on("pagebeforeshow", function (event, ui) {
         $('#maquina .ui-content').css("visibility", "hidden");
     });
@@ -23,29 +19,9 @@ $(document).ready(function () {
             prevButton: '.swiper-button-prev'
         });
 
-        mySwiper.on('init', function () {
-            console.log('slide change start 2');
-        });
-
 
 
     });
-});
-
-
-document.addEventListener("backbutton", onBackKeyDown, false);
-
-function onBackKeyDown() {
-    var nav = window.navigator;
-    
-    if (this.phonegapNavigationEnabled &&
-            nav &&
-            nav.app &&
-            nav.app.backHistory) {
-        nav.app.backHistory();
-    } else {
-        window.history.back();
-    }
 }
 
 function openPopup(msg) {
