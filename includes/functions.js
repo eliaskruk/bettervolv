@@ -24,9 +24,10 @@ $(document).ready(function () {
     });
 });
 
-$(document).on('backbutton', function (e) {
-    e.preventDefault();
+$(document).on('backbutton', function (event, ui) {
+    event.preventDefault();
     // YOUR CODE GOES HERE
+    return false;
 });
 
 function openPopup(msg) {
