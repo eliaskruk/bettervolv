@@ -35,6 +35,19 @@ $(document).ready(function () {
 
 document.addEventListener("backbutton", onBackKeyDown, false);
 
+function onBackKeyDown() {
+    var nav = window.navigator;
+    
+    if (this.phonegapNavigationEnabled &&
+            nav &&
+            nav.app &&
+            nav.app.backHistory) {
+        nav.app.backHistory();
+    } else {
+        window.history.back();
+    }
+}
+
 function openPopup(msg) {
     alert(msg);
 }
@@ -42,10 +55,10 @@ function mylog(cosa) {
     console.log(cosa);
 }
 
-function mostrar_galeria(){
+function mostrar_galeria() {
     $("#maquina .ui-content").removeClass("datos-tecnicos").addClass("galeria");
 }
 
-function mostrar_datos_tecnicos(){
+function mostrar_datos_tecnicos() {
     $("#maquina .ui-content").removeClass("galeria").addClass("datos-tecnicos");
 }
