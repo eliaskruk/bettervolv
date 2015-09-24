@@ -1,7 +1,7 @@
-function eventListener(){
+function eventListener() {
     var hm = $(window).height() / 3.15;
     $('.maq-content').height(hm);
-    
+
     $("#maquina").on("pagebeforeshow", function (event, ui) {
         $('#maquina .ui-content').css("visibility", "hidden");
     });
@@ -18,12 +18,31 @@ function eventListener(){
             nextButton: '.swiper-button-next',
             prevButton: '.swiper-button-prev'
         });
-
-
-
     });
 }
 
+function videos() {
+    var basepath_ = cordova.file.dataDirectory + 'workout/';
+    var apppath_ = cordova.file.applicationDirectory;
+    alert('base: ' + basepath_);
+    alert('app: ' + apppath_);
+
+
+//    var fileTransfer = new FileTransfer();
+//    var uri = cordova.file.applicationDirectory + 'www/' + workouts[curWorkout].exercices[curEx].video;
+//    fileTransfer.download(
+//            uri,
+//            cordova.file.dataDirectory + workouts[curWorkout].exercices[curEx].video,
+//            function (entry) {
+//                console.log("download complete: " + entry.fullPath);
+//                videoPlayer.src = cordova.file.dataDirectory + entry.fullPath;
+//                console.log("videoPlayer.src: " + videoPlayer.src);
+//            },
+//            function (error) {
+//                alert("download error source " + error.source + " (code: " + error.code + ")");
+//            }
+//    );
+}
 function openPopup(msg) {
     alert(msg);
 }
