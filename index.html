@@ -124,12 +124,18 @@
                 </div>
             </div>
             <div data-role="content">
-
-                <a class="ui-btn" onclick="videos();">TEST</a>
-                <!--<img src="file:///storage/sdcard1/IMG_20120924_201326.png" alt="">-->
-                <video id="videoPlayer" webkit-playsinline width="450" controls>
-                    <source src="file:///storage/sdcard1/video.mp4" type="video/mp4">
-                </video>
+                <ul class="lista-videos">
+                    <!-- file:///storage/sdcard1 -->
+                    <!-- assets/videos -->
+                    <li><a href="file:///storage/sdcard1/video.mp4"><img src="imagenes/video-fondo.jpg" alt=""><span class="play-ss"></span></a></li>
+                    <li><a href="file:///storage/sdcard1/FMX Walk around.MOV"><img src="imagenes/A35F_A40F.jpg" alt=""><span class="play-ss"></span></a></li>
+                    <li><a href="file:///storage/sdcard1/Volvo PL3005D Pipelayer Walk Around.avi"><img src="imagenes/EC220D.jpg" alt=""><span class="play-ss"></span></a></li>
+                </ul>
+                <div class="video-container">
+                    <video id="videoPlayer" controls poster="imagenes/video-fondo.jpg">
+                        <source src="file:///storage/sdcard1/video.mp4" type="video/mp4">
+                    </video>
+                </div>
 
                 <a href="#home" class="back"></a>
             </div>

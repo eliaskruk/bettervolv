@@ -106,10 +106,13 @@ a.ui-btn.m-button {
     top: 10%;
 }
 
-#maquina .header-content h1 {
+#maquina .header-content h1, #videos .header-content h1  {
     font-size: 3em;
     font-family: "volvo_broad_proregular";
     font-weight: 100;
+}
+#maquina .ui-content{
+    visibility: hidden;
 }
 #maquina .ui-content.galeria{
     background: url("../imagenes/solapa-fotos.png") no-repeat center;
@@ -187,6 +190,56 @@ a.ui-btn.m-button {
 #maquina .datos-tecnicos .visor-pdf{
     display: block;
 }
+
+#videos .ui-content {
+    background-color: #d5dde3;
+    border: 1px solid #b3b8bb;
+    visibility: hidden;
+    padding: 0 2%;
+}
+#videos .back {
+    left: 1%;
+}
+.lista-videos {
+    width: 15%;
+    height: 85%;
+    list-style: none;
+    float: left;
+    margin: 1% 0;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.lista-videos a {
+    display: block;
+    margin-bottom: 8%;
+    position: relative;
+}
+.lista-videos img {
+    width: 100%;
+    display: block;
+}
+.lista-videos span.play-ss {
+    background: url("../imagenes/play.png") no-repeat center;
+    background-size: 35%;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+}
+.video-container {
+    background-color: #000;
+    float: left;
+    width: 83%;
+    height: 96%;
+    margin: 1% 0 1% 2%;
+}
+#videoPlayer {
+    width: 100%;
+    height: 100%;
+}
+
+
 @media screen and (max-width: 800px) {
     * {
 
