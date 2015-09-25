@@ -88,3 +88,5 @@ function mostrar_galeria() {
 function mostrar_datos_tecnicos() {
     $("#maquina .ui-content").removeClass("galeria").addClass("datos-tecnicos");
 }
+
+
