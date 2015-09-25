@@ -6,7 +6,7 @@ function eventListener() {
 
     $("#maquina").on("pageshow", function (event, ui) {
         videos();
-        
+
         var hc = ($(window).height() - $('#maquina .ui-header').height()) * 0.9;
         //mylog("HC = " + hc + " ---- WH = " + $(window).height() + " ---- HEADER = " + $('#maquina .ui-header').height());
         $('#maquina .ui-content').height(hc);
@@ -56,6 +56,23 @@ function eventListener() {
 function videos() {
     var apppath_ = cordova.file.externalRootDirectory;
     alert('SD PATH: ' + apppath_);
+
+    window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
+    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
+}
+function gotFS(fileSystem) {
+    var filePaht_ = fileSystem.root.fullPath;
+    console.log(filePaht_);
+}
+function fail() {
+    console.log('fail to get filepath');
+}
+
+function getPhoneGapPath() {
+    /*'use strict';*/
+    var path = window.location.pathname;
+    var phoneGapPath = path.substring(0, path.lastIndexOf('/') + 1);
+    console.log(phoneGapPath);
 }
 function openPopup(msg) {
     alert(msg);
