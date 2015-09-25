@@ -24,7 +24,7 @@
         <div data-role="page" id="home">
             <div data-role="header" data-position="inline">
                 <div class="header-content">
-                    <h1>VOLVO CONSTRUCTION EQUIPMENTT</h1>
+                    <h1>VOLVO CONSTRUCTION EQUIPMENT</h1>
                     <img class="ui-btn-right logo" src="imagenes/icon.png">
                 </div>
             </div>
@@ -54,7 +54,7 @@
             </div>
             <div data-role="footer">
                 <a href="#videos">VIDEOS<span class="separador"></span></a>
-                <a href="">BROCHURE</a>
+                <a href="#brochure">BROCHURE</a>
             </div>
         </div>
 
@@ -127,16 +127,51 @@
                 <ul class="lista-videos">
                     <!-- file:///storage/sdcard1 -->
                     <!-- assets/videos -->
-                    <li><a href="file:///storage/sdcard1/video.mp4"><img src="imagenes/video-fondo.jpg" alt=""><span class="play-ss"></span></a></li>
-                    <li><a href="file:///storage/sdcard1/FMX Walk around.MOV"><img src="imagenes/A35F_A40F.jpg" alt=""><span class="play-ss"></span></a></li>
-                    <li><a href="file:///storage/sdcard1/Volvo PL3005D Pipelayer Walk Around.avi"><img src="imagenes/EC220D.jpg" alt=""><span class="play-ss"></span></a></li>
+                    <li><a href="assets/videos/video.mp4"><img src="imagenes/video-fondo.jpg" alt=""><span class="play-ss"></span></a></li>
+                    <li><a href="file:///storage/sdcard1/FMX Walk around.MOV"><img src="imagenes/video-fondo.jpg" alt=""><span class="play-ss"></span></a></li>
+                    <li><a href="file:///storage/sdcard1/Volvo PL3005D Pipelayer Walk Around.avi"><img src="imagenes/video-fondo.jpg" alt=""><span class="play-ss"></span></a></li>
                 </ul>
                 <div class="video-container">
                     <video id="videoPlayer" controls poster="imagenes/video-fondo.jpg">
-                        <source src="file:///storage/sdcard1/video.mp4" type="video/mp4">
+                        <source src="assets/videos/video.mp4" type="video/mp4">
                     </video>
                 </div>
 
+                <a href="#home" class="back"></a>
+            </div>
+        </div>
+
+
+        <div data-role="page" id="brochure">
+            <div data-role="header" data-position="inline">
+                <div class="header-content">
+                    <h1>VOLVO CONSTRUCTION EQUIPMENTT</h1>
+                    <img class="ui-btn-right logo" src="imagenes/icon.png">
+                </div>
+            </div>
+            <div data-role="content">
+                <img class="icon-volvo" src="imagenes/icon2.png">
+                <p class="text">
+                    Se enviará un archivo PDF a su casilla de correo con la información más 
+                    completa sobre nuestras unidades Volvo Construction Equipment.
+                </p>
+                <form id="fomulario">
+                    <p>
+                        <label>NOMBRE Y APELLIDO</label>
+                        <input type="text" name="nombre" />
+                    </p>
+                    <p>
+                        <label>EMPRESA</label>
+                        <input type="text" name="empresa" />
+                    </p>
+                    <p>
+                        <label>EMAIL</label>
+                        <input type="text" name="email" />
+                    </p>
+                    <p>
+                        <button type="submit">ENVIAR</button>
+                    </p>
+                </form>
                 <a href="#home" class="back"></a>
             </div>
         </div>

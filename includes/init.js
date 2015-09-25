@@ -2,7 +2,7 @@ var insertOrUpdateQueue = [];
 var syncing = false;
 var srvsyncing = false;
 var dbController = null;
-var onweb = true;
+var onweb = false;
 var popup_opened = true;
 var siteUrl = 'http://thepastoapps.com/proyectos/pumas/';
 var responseUrl = siteUrl + 'response.php';
@@ -39,8 +39,10 @@ function onBackKeyDown() {
                     nav.app &&
                     nav.app.backHistory) {
                 nav.app.backHistory();
+                videoPlayer.pause();
             } else {
                 window.history.back();
+                videoPlayer.pause();
             }
         }
     }
