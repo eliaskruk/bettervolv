@@ -51,8 +51,8 @@ function eventListener() {
         $('#brochure .ui-content').height(hc);
         $('#brochure .ui-content').css("visibility", "visible");
     });
-    
-    
+
+
 }
 
 function videos() {
@@ -65,13 +65,13 @@ function videos() {
 function gotFS(fileSystem) {
     //var filePaht_ = fileSystem.root.fullPath;
     //console.log(filePaht_);
-    
+
     var reader = fileSystem.root.createReader();
-    reader.readEntries(gotList, fail);  
+    reader.readEntries(gotList, fail);
 }
 function gotList(entries) {
     var i;
-    for (i=0; i<entries.length; i++) {
+    for (i = 0; i < entries.length; i++) {
         console.log(entries[i]);
     }
 }
@@ -98,4 +98,23 @@ function mostrar_galeria() {
 
 function mostrar_datos_tecnicos() {
     $("#maquina .ui-content").removeClass("galeria").addClass("datos-tecnicos");
+}
+
+function video1() {
+    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fs) {
+        //console.log("Root = " + fs.root.fullPath);
+        var directoryReader = fs.root.createReader();
+        directoryReader.readEntries(function (entries) {
+            var i;
+            for (i = 0; i < entries.length; i++) {
+                console.log(entries[i].name);
+
+
+            }
+        }, function (error) {
+            alert(error.code);
+        })
+    }, function (error) {
+        alert(error.code);
+    });
 }
