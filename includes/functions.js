@@ -99,15 +99,3 @@ function mostrar_galeria() {
 function mostrar_datos_tecnicos() {
     $("#maquina .ui-content").removeClass("galeria").addClass("datos-tecnicos");
 }
-
-
-function success(entries) {
-    var i;
-    for (i = 0; i < entries.length; i++) {
-        console.log(entries[i].name);
-    }
-}
-
-function fail(error) {
-    alert("Failed to list directory contents: " + error.code);
-}
