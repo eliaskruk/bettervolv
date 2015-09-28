@@ -108,8 +108,6 @@ function video1() {
             var i;
             for (i = 0; i < entries.length; i++) {
                 console.log(entries[i].name);
-
-
             }
         }, function (error) {
             alert(error.code);
