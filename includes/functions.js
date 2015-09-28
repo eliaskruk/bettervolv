@@ -57,10 +57,10 @@ function eventListener() {
 
 function videos() {
     var apppath_ = cordova.file.externalRootDirectory;
-    alert('SD PATH: ' + apppath_);
+    //alert('SD PATH: ' + apppath_);
 
     window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
-    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
+    window.resolveLocalFileSystemURL("file:///storage/", 0, gotFS, fail);
 }
 function gotFS(fileSystem) {
     //var filePaht_ = fileSystem.root.fullPath;
