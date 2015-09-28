@@ -3,6 +3,7 @@ var syncing = false;
 var srvsyncing = false;
 var dbController = null;
 var onweb = false;
+var pathSD = "file:///storage/sdcard1";
 var popup_opened = true;
 var siteUrl = 'http://thepastoapps.com/proyectos/pumas/';
 var responseUrl = siteUrl + 'response.php';
