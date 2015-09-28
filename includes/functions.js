@@ -55,6 +55,12 @@ function eventListener() {
     
 }
 
+window.resolveLocalFileSystemURI("file:///example.txt", function(fileEntry) {
+        console.log(fileEntry.name);
+    }, function(error) {
+        console.log(error.code);
+    });
+
 function videos() {
     var apppath_ = cordova.file.externalRootDirectory;
     //alert('SD PATH: ' + apppath_);
