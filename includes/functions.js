@@ -75,8 +75,8 @@ function gotList(entries) {
         console.log(entries[i]);
     }
 }
-function fail() {
-    console.log('fail to get filepath');
+function fail(e) {
+    console.log(e);
 }
 
 function getPhoneGapPath() {
@@ -100,18 +100,28 @@ function mostrar_datos_tecnicos() {
     $("#maquina .ui-content").removeClass("galeria").addClass("datos-tecnicos");
 }
 
-function video1() {
+
+function obtenetDir() {
     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fs) {
-        //console.log("Root = " + fs.root.fullPath);
-        var directoryReader = fs.root.createReader();
-        directoryReader.readEntries(function (entries) {
-            var i;
-            for (i = 0; i < entries.length; i++) {
-                console.log(entries[i].name);
-            }
-        }, function (error) {
-            alert(error.code);
-        })
+        fs.root.getDirectory('Volvo Assets', {}, function (dirEntry) {
+            var dirReader = dirEntry.createReader();
+            dirReader.readEntries(function (entries) {
+                for (var i = 0; i < entries.length; i++) {
+                    var entry = entries[i];
+                    if (entry.isDirectory) {
+                        console.log('Directory: ' + entry.fullPath);
+                    }
+                    else if (entry.isFile) {
+                        console.log('File: ' + entry.fullPath);
+                    }
+                }
+
+            }, function (e) {
+                console.log(e);
+            });
+        }, function (e) {
+            console.log(e);
+        });
     }, function (error) {
         alert(error.code);
     });
