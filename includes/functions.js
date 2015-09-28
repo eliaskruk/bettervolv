@@ -60,7 +60,7 @@ function videos() {
     //alert('SD PATH: ' + apppath_);
 
     window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
-    window.resolveLocalFileSystemURL("file:///storage/", 0, gotFS, fail);
+    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
 }
 function gotFS(fileSystem) {
     //var filePaht_ = fileSystem.root.fullPath;
