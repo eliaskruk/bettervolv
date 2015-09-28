@@ -51,6 +51,8 @@ function eventListener() {
         $('#brochure .ui-content').height(hc);
         $('#brochure .ui-content').css("visibility", "visible");
     });
+    
+    
 }
 
 function videos() {
@@ -61,8 +63,17 @@ function videos() {
     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
 }
 function gotFS(fileSystem) {
-    var filePaht_ = fileSystem.root.fullPath;
-    console.log(filePaht_);
+    //var filePaht_ = fileSystem.root.fullPath;
+    //console.log(filePaht_);
+    
+    var reader = fileSystem.root.createReader();
+    reader.readEntries(gotList, fail);  
+}
+function gotList(entries) {
+    var i;
+    for (i=0; i<entries.length; i++) {
+        console.log(entries[i]);
+    }
 }
 function fail() {
     console.log('fail to get filepath');
@@ -90,3 +101,13 @@ function mostrar_datos_tecnicos() {
 }
 
 
+function success(entries) {
+    var i;
+    for (i = 0; i < entries.length; i++) {
+        console.log(entries[i].name);
+    }
+}
+
+function fail(error) {
+    alert("Failed to list directory contents: " + error.code);
+}
