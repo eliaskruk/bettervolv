@@ -20,18 +20,14 @@ function eventListener() {
     $('.maq-content').height(hm);
 
     //MOSTRAR GALERIA DE IMAGENES MAQUINA
-    $("#maquina .m-button").click(function () {
+    $("#home .m-button").click(function () {
         var nombreCarpeta = $(this).attr("data-value");
-        
-        var hc = ($(window).height() - $('#maquina .ui-header').height()) * 0.9;
-        $('#maquina .ui-content').height(hc);
-        $('#maquina .ui-content').css("visibility", "hidden");
 
         getImagenes("Volvo Assets/" + tipoMaquinaria + "/Imagenes/" + nombreCarpeta + "/FOTOS");
-        console.log("PATH IMAGENES: Volvo Assets/" + tipoMaquinaria + "/Imagenes/" + $(this).attr("href") + "/FOTOS");
+        //console.log("PATH IMAGENES: Volvo Assets/" + tipoMaquinaria + "/Imagenes/" + nombreCarpeta + "/FOTOS");
 
         setTimeout(function () {
-            console.log(imagenes);
+            //console.log(imagenes);
             $('.swiper-wrapper').html('');
             mySwiper.slideTo(0);
             for (var i = 0; i < imagenes.length; i++) {
@@ -39,12 +35,22 @@ function eventListener() {
             }
             mySwiper.update(true);
 
-            $('#maquina .ui-content').css("visibility", "visible");
+            $('#maquina .ui-content').css("visibility", "hidden");
+
+            $.mobile.changePage("#maquina");
         }, 500);
+    });
+
+    $("#maquina").on("pageshow", function (event, ui) {
+        var hc = ($(window).height() - $('#maquina .ui-header').height()) * 0.9;
+        $('#maquina .ui-content').height(hc);
+
+        $('#maquina .ui-content').css("visibility", "visible");
     });
 
     $("#maquina").on("pagehide", function (event, ui) {
         mySwiper.removeAllSlides();
+        mostrar_galeria();
     });
     $("#videos").on("pageshow", function (event, ui) {
         var hc = ($(window).height() - $('#videos .ui-header').height()) * 0.9;
