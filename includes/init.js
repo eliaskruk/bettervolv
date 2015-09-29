@@ -28,25 +28,26 @@ if (onweb) {
 
 
 function onBackKeyDown() {
-    if ($.mobile.activePage.attr("id") === "home") {
-        return false;
-    } else {
-        if (onweb) {
-            history.back();
-        } else {
-            var nav = window.navigator;
-            if (this.phonegapNavigationEnabled &&
-                    nav &&
-                    nav.app &&
-                    nav.app.backHistory) {
-                nav.app.backHistory();
-                videoPlayer.pause();
-            } else {
-                window.history.back();
-                videoPlayer.pause();
-            }
-        }
-    }
+    return false;
+//    if ($.mobile.activePage.attr("id") === "home") {
+//        return false;
+//    } else {
+//        if (onweb) {
+//            history.back();
+//        } else {
+//            var nav = window.navigator;
+//            if (this.phonegapNavigationEnabled &&
+//                    nav &&
+//                    nav.app &&
+//                    nav.app.backHistory) {
+//                nav.app.backHistory();
+//                videoPlayer.pause();
+//            } else {
+//                window.history.back();
+//                videoPlayer.pause();
+//            }
+//        }
+//    }
 }
 function onDeviceReady() {
     // Alert Bienvenida
