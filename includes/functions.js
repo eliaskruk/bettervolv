@@ -36,8 +36,8 @@ function eventListener() {
         $('#brochure .ui-content').css("visibility", "visible");
     });
 
-    getFilesVideos("Volvo Assets/" + tipoMaquinaria + "/Videos")
-    getFilesThumbs("Volvo Assets/" + tipoMaquinaria + "/Videos/Thumbnails")
+    getFilesVideos("Volvo Assets/" + tipoMaquinaria + "/Videos");
+    getFilesThumbs("Volvo Assets/" + tipoMaquinaria + "/Videos/Thumbnails");
     setTimeout(generar_galeria_videos(), 500);
 }
 
