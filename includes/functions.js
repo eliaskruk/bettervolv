@@ -5,17 +5,27 @@ function eventListener() {
     } else {
         $(".maquinas-content.trucks").show();
     }
+
+    mySwiper = new Swiper('.swiper-container', {
+        // Optional parameters
+        preloadImages: true,
+        paginationClickable: true,
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev'
+    });
+
     var videoPlayer = document.getElementById("videoPlayer");
 
     var hm = $(window).height() / 3.15;
     $('.maq-content').height(hm);
 
     //MOSTRAR GALERIA DE IMAGENES MAQUINA
-    $(".maquinas-content a.m-button").click(function (e) {
-        e.preventDefault();
+    $("#maquina").on("pageshow", function (event, ui) {
+        var hc = ($(window).height() - $('#maquina .ui-header').height()) * 0.9;
+        $('#maquina .ui-content').height(hc);
+        $('#maquina .ui-content').css("visibility", "hidden");
 
         getImagenes("Volvo Assets/" + tipoMaquinaria + "/Imagenes/" + $(this).attr("href") + "/FOTOS");
-        $('#maquina .ui-content').css("visibility", "hidden");
 
         setTimeout(function () {
             $('.swiper-wrapper').html('');
@@ -24,25 +34,11 @@ function eventListener() {
                 $(".swiper-wrapper").append('<div class="swiper-slide"><img src="' + decodeURI(imagenes[i].nativeURL) + '" alt=""></div>');
             }
             mySwiper.update(true);
-            $('#maquina .ui-content').css("visibility", "hidden");
+
+            $('#maquina .ui-content').css("visibility", "visible");
         }, 500);
-
-        mySwiper = new Swiper('.swiper-container', {
-            // Optional parameters
-            preloadImages: true,
-            paginationClickable: true,
-            nextButton: '.swiper-button-next',
-            prevButton: '.swiper-button-prev'
-        });
-
-        $('#maquina .ui-content').css("visibility", "visible");
-
-        return false;
     });
-    $("#maquina").on("pageshow", function (event, ui) {
-        var hc = ($(window).height() - $('#maquina .ui-header').height()) * 0.9;
-        $('#maquina .ui-content').height(hc);
-    });
+
     $("#maquina").on("pagehide", function (event, ui) {
         mySwiper.removeAllSlides();
     });
