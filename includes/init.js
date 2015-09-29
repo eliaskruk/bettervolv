@@ -15,6 +15,8 @@ var uploadInterval = null;
 var showInterval = null;
 var actualizando = null;
 
+var inDirectory = new Array();
+var tipoMaquinaria = "Construction";
 
 
 if (onweb) {
