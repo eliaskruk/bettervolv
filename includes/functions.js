@@ -24,18 +24,16 @@ function eventListener() {
         var nombreCarpeta = $(this).attr("data-value");
 
         getImagenes("Volvo Assets/" + tipoMaquinaria + "/Imagenes/" + nombreCarpeta + "/FOTOS");
-        //console.log("PATH IMAGENES: Volvo Assets/" + tipoMaquinaria + "/Imagenes/" + nombreCarpeta + "/FOTOS");
+
+        $('#maquina .ui-content').css("visibility", "hidden");
+        $("#maquina .header-content h1").html(nombreCarpeta);
+        $('.swiper-wrapper').html('');
+        mySwiper.slideTo(0);
 
         setTimeout(function () {
-            //console.log(imagenes);
-            $('.swiper-wrapper').html('');
-            mySwiper.slideTo(0);
             for (var i = 0; i < imagenes.length; i++) {
                 $(".swiper-wrapper").append('<div class="swiper-slide"><img src="' + decodeURI(imagenes[i].nativeURL) + '" alt=""></div>');
             }
-            mySwiper.update(true);
-
-            $('#maquina .ui-content').css("visibility", "hidden");
 
             $.mobile.changePage("#maquina");
         }, 500);
@@ -44,6 +42,8 @@ function eventListener() {
     $("#maquina").on("pageshow", function (event, ui) {
         var hc = ($(window).height() - $('#maquina .ui-header').height()) * 0.9;
         $('#maquina .ui-content').height(hc);
+
+        mySwiper.update(true);
 
         $('#maquina .ui-content').css("visibility", "visible");
     });
