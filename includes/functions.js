@@ -21,6 +21,9 @@ function eventListener() {
 //mySwiper.update();
     });
     $("#videos").on("pageshow", function (event, ui) {
+        if (video_galery == 0){
+            generar_galeria_videos();
+        }
         var hc = ($(window).height() - $('#videos .ui-header').height()) * 0.9;
         //mylog("HC = " + hc + " ---- WH = " + $(window).height() + " ---- HEADER = " + $('#videos .ui-header').height());
         $('#videos .ui-content').height(hc);
@@ -36,9 +39,8 @@ function eventListener() {
         $('#brochure .ui-content').css("visibility", "visible");
     });
 
-    $.when(getFilesVideos("Volvo Assets/" + tipoMaquinaria + "/Videos"),
-            getFilesThumbs("Volvo Assets/" + tipoMaquinaria + "/Videos/Thumbnails"))
-            .then(generar_galeria_videos());
+    getFilesVideos("Volvo Assets/" + tipoMaquinaria + "/Videos");
+    getFilesThumbs("Volvo Assets/" + tipoMaquinaria + "/Videos/Thumbnails");
 }
 
 function openPopup(msg) {
