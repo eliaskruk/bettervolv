@@ -1,5 +1,7 @@
 function eventListener() {
     var videoPlayer = document.getElementById("videoPlayer");
+    generar_galeria_videos();
+
     var hm = $(window).height() / 3.15;
     $('.maq-content').height(hm);
     $("#maquina").on("pageshow", function (event, ui) {
@@ -27,12 +29,6 @@ function eventListener() {
     });
     $("#videos").on("pagehide", function (event, ui) {
         videoPlayer.pause();
-    });
-    $(".lista-videos a").click(function (e) {
-        e.preventDefault();
-        videoPlayer.src = $(this).attr("href");
-        videoPlayer.poster = $(this).find("img").attr("src");
-        return false;
     });
     $("#brochure").on("pageshow", function (event, ui) {
         var hc = ($(window).height() - $('#brochure .ui-header').height()) * 0.9;
@@ -106,15 +102,52 @@ function getFiles_in_dir(dir) {
     }, fail);
 }
 
+function getFilesVideos(dir) {
+    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fs) {
+        fs.root.getDirectory(dir, {}, function (dirEntry) {
+            var dirReader = dirEntry.createReader();
+            dirReader.readEntries(function (entries) {
+                videos = new Array();
+                for (var i = 0; i < entries.length; i++) {
+                    var entry = entries[i];
+                    if (entry.isFile) {
+                        if (entry.name != "Thumbs.db" && entry.name != ".DS_Store") {
+                            videos.push(entry);
+                        }
+                    }
+                }
+            }, fail);
+        }, fail);
+    }, fail);
+}
+
+function getFilesThumbs(dir) {
+    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fs) {
+        fs.root.getDirectory(dir, {}, function (dirEntry) {
+            var dirReader = dirEntry.createReader();
+            dirReader.readEntries(function (entries) {
+                thumbs = new Array();
+                for (var i = 0; i < entries.length; i++) {
+                    var entry = entries[i];
+                    if (entry.isFile) {
+                        if (entry.name != "Thumbs.db" && entry.name != ".DS_Store") {
+                            thumbs.push(entry);
+                        }
+                    }
+                }
+            }, fail);
+        }, fail);
+    }, fail);
+}
+
+
 function fail(e) {
     console.log(e);
 }
 
 function generar_galeria_videos() {
-    getFiles_in_dir("Volvo Assets/" + tipoMaquinaria + "/Videos");
-    var videos = inDirectory;
-    getFiles_in_dir("Volvo Assets/" + tipoMaquinaria + "/Videos/Thumbnails");
-    var thumbs = inDirectory;
+    setTimeout(getFilesVideos("Volvo Assets/" + tipoMaquinaria + "/Videos"), 50);
+    setTimeout(getFilesThumbs("Volvo Assets/" + tipoMaquinaria + "/Videos/Thumbnails"), 50);
     
     videoPlayer.src = decodeURI(videos[0].nativeURL);
     videoPlayer.poster = obtener_thumbs(videos[0].name, thumbs);
@@ -122,6 +155,13 @@ function generar_galeria_videos() {
     for (var i = 0; i < videos.length; i++) {
         $("#videos .lista-videos").append('<li><a href="' + decodeURI(videos[i].nativeURL) + '"><img src="' + obtener_thumbs(videos[i].name, thumbs) + '" alt=""><span class="play-ss"></span></a></li>');
     }
+
+    $(".lista-videos a").click(function (e) {
+        e.preventDefault();
+        videoPlayer.src = $(this).attr("href");
+        videoPlayer.poster = $(this).find("img").attr("src");
+        return false;
+    });
 }
 
 function obtener_thumbs(nombreVideo, thumbs) {
@@ -130,7 +170,7 @@ function obtener_thumbs(nombreVideo, thumbs) {
     for (var i = 0; i < thumbs.length; i++) {
         var nombreThumb = thumbs[i].name;
         if (nombreThumb.indexOf(nombSinExtension) > -1) {
-            return nombreThumb;
+            return decodeURI(thumbs[i].nativeURL);
         }
     }
 }

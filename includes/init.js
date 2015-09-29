@@ -16,6 +16,8 @@ var showInterval = null;
 var actualizando = null;
 
 var inDirectory = new Array();
+var videos = new Array();
+var thumbs = new Array();
 var tipoMaquinaria = "Construction";
 
 
