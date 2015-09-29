@@ -20,14 +20,18 @@ function eventListener() {
     $('.maq-content').height(hm);
 
     //MOSTRAR GALERIA DE IMAGENES MAQUINA
-    $("#maquina").on("pageshow", function (event, ui) {
+    $("#maquina .m-button").click(function () {
+        var nombreCarpeta = $(this).attr("data-value");
+        
         var hc = ($(window).height() - $('#maquina .ui-header').height()) * 0.9;
         $('#maquina .ui-content').height(hc);
         $('#maquina .ui-content').css("visibility", "hidden");
 
-        getImagenes("Volvo Assets/" + tipoMaquinaria + "/Imagenes/" + $(this).attr("href") + "/FOTOS");
+        getImagenes("Volvo Assets/" + tipoMaquinaria + "/Imagenes/" + nombreCarpeta + "/FOTOS");
+        console.log("PATH IMAGENES: Volvo Assets/" + tipoMaquinaria + "/Imagenes/" + $(this).attr("href") + "/FOTOS");
 
         setTimeout(function () {
+            console.log(imagenes);
             $('.swiper-wrapper').html('');
             mySwiper.slideTo(0);
             for (var i = 0; i < imagenes.length; i++) {
