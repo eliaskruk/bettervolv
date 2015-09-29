@@ -55,7 +55,9 @@ a.ui-btn.m-button {
     padding: 0;
     text-decoration: none;
 }
-
+.maquinas-content{
+    display: none;
+}
 .maq-content{
     background: url("") no-repeat center;
     background-size: auto 100%;

@@ -1,14 +1,32 @@
 function eventListener() {
+    //Determinar el tipo de contenido
+    if (tipoMaquinaria == "Construction") {
+        $(".maquinas-content.construction").show();
+    } else {
+        $(".maquinas-content.trucks").show();
+    }
     var videoPlayer = document.getElementById("videoPlayer");
 
     var hm = $(window).height() / 3.15;
     $('.maq-content').height(hm);
-    $("#maquina").on("pageshow", function (event, ui) {
 
-        var hc = ($(window).height() - $('#maquina .ui-header').height()) * 0.9;
-        //mylog("HC = " + hc + " ---- WH = " + $(window).height() + " ---- HEADER = " + $('#maquina .ui-header').height());
-        $('#maquina .ui-content').height(hc);
-        $('#maquina .ui-content').css("visibility", "visible");
+    //MOSTRAR GALERIA DE IMAGENES MAQUINA
+    $(".maquinas-content a.m-button").click(function (e) {
+        e.preventDefault();
+
+        getImagenes("Volvo Assets/" + tipoMaquinaria + "/Imagenes/" + $(this).attr("href"));
+        $('#maquina .ui-content').css("visibility", "hidden");
+
+        setTimeout(function () {
+            $('.swiper-wrapper').html('');
+            mySwiper.slideTo(0);
+            for (var i = 0; i < imagenes.length; i++) {
+                $(".swiper-wrapper").append('<div class="swiper-slide"><img src="' + decodeURI(imagenes[i].nativeURL) + '" alt=""></div>');
+            }
+            mySwiper.update(true);
+            $('#maquina .ui-content').css("visibility", "hidden");
+        }, 500);
+
         mySwiper = new Swiper('.swiper-container', {
             // Optional parameters
             preloadImages: true,
@@ -16,18 +34,29 @@ function eventListener() {
             nextButton: '.swiper-button-next',
             prevButton: '.swiper-button-prev'
         });
+
+        $('#maquina .ui-content').css("visibility", "visible");
+
+        return false;
+    });
+    $("#maquina").on("pageshow", function (event, ui) {
+        var hc = ($(window).height() - $('#maquina .ui-header').height()) * 0.9;
+        $('#maquina .ui-content').height(hc);
     });
     $("#maquina").on("pagehide", function (event, ui) {
-//mySwiper.update();
+        mySwiper.removeAllSlides();
     });
     $("#videos").on("pageshow", function (event, ui) {
-        if (video_galery == 0){
-            generar_galeria_videos();
-        }
         var hc = ($(window).height() - $('#videos .ui-header').height()) * 0.9;
-        //mylog("HC = " + hc + " ---- WH = " + $(window).height() + " ---- HEADER = " + $('#videos .ui-header').height());
+
         $('#videos .ui-content').height(hc);
-        $('#videos .ui-content').css("visibility", "visible");
+
+        if (video_galery == 0) {
+            generar_galeria_videos();
+            video_galery = 1;
+        } else {
+            $('#videos .ui-content').css("visibility", "visible");
+        }
     });
     $("#videos").on("pagehide", function (event, ui) {
         videoPlayer.pause();
@@ -59,7 +88,6 @@ function mostrar_datos_tecnicos() {
 }
 
 function getAll_in_dir(dir) {
-    inDirectory = new Array();
     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fs) {
         fs.root.getDirectory(dir, {}, function (dirEntry) {
             var dirReader = dirEntry.createReader();
@@ -68,7 +96,6 @@ function getAll_in_dir(dir) {
             }, fail);
         }, fail);
     }, fail);
-    return inDirectory
 }
 
 function getFolders_in_dir(dir) {
@@ -145,6 +172,25 @@ function getFilesThumbs(dir) {
     }, fail);
 }
 
+function getImagenes(dir) {
+    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fs) {
+        fs.root.getDirectory(dir, {}, function (dirEntry) {
+            var dirReader = dirEntry.createReader();
+            dirReader.readEntries(function (entries) {
+                imagenes = new Array();
+                for (var i = 0; i < entries.length; i++) {
+                    var entry = entries[i];
+                    if (entry.isFile) {
+                        if (entry.name != "Thumbs.db" && entry.name != ".DS_Store") {
+                            imagenes.push(entry);
+                        }
+                    }
+                }
+            }, fail);
+        }, fail);
+    }, fail);
+}
+
 
 function fail(e) {
     console.log(e);
@@ -157,6 +203,8 @@ function generar_galeria_videos() {
     for (var i = 0; i < videos.length; i++) {
         $("#videos .lista-videos").append('<li><a href="' + decodeURI(videos[i].nativeURL) + '"><img src="' + obtener_thumbs(videos[i].name, thumbs) + '" alt=""><span class="play-ss"></span></a></li>');
     }
+
+    $('#videos .ui-content').css("visibility", "visible");
 
     $(".lista-videos a").click(function (e) {
         e.preventDefault();
