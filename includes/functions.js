@@ -1,8 +1,5 @@
 function eventListener() {
     var videoPlayer = document.getElementById("videoPlayer");
-    getFilesVideos("Volvo Assets/" + tipoMaquinaria + "/Videos")
-    getFilesThumbs("Volvo Assets/" + tipoMaquinaria + "/Videos/Thumbnails")
-    setTimeout(generar_galeria_videos(), 500);
 
     var hm = $(window).height() / 3.15;
     $('.maq-content').height(hm);
@@ -38,6 +35,10 @@ function eventListener() {
         $('#brochure .ui-content').height(hc);
         $('#brochure .ui-content').css("visibility", "visible");
     });
+
+    getFilesVideos("Volvo Assets/" + tipoMaquinaria + "/Videos")
+    getFilesThumbs("Volvo Assets/" + tipoMaquinaria + "/Videos/Thumbnails")
+    setTimeout(generar_galeria_videos(), 500);
 }
 
 function openPopup(msg) {
