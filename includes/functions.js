@@ -146,8 +146,8 @@ function fail(e) {
 }
 
 function generar_galeria_videos() {
-    setTimeout(getFilesVideos("Volvo Assets/" + tipoMaquinaria + "/Videos"), 50);
-    setTimeout(getFilesThumbs("Volvo Assets/" + tipoMaquinaria + "/Videos/Thumbnails"), 50);
+    setTimeout(getFilesVideos("Volvo Assets/" + tipoMaquinaria + "/Videos"), 500);
+    setTimeout(getFilesThumbs("Volvo Assets/" + tipoMaquinaria + "/Videos/Thumbnails"), 500);
     
     videoPlayer.src = decodeURI(videos[0].nativeURL);
     videoPlayer.poster = obtener_thumbs(videos[0].name, thumbs);
