@@ -107,9 +107,9 @@ function getAll_in_dir(dir) {
             var dirReader = dirEntry.createReader();
             dirReader.readEntries(function (entries) {
                 entr = entries;
-            }, fail(e));
-        }, fail(e));
-    }, fail(e));
+            }, fail());
+        }, fail());
+    }, fail());
 
     return entr;
 }
@@ -126,9 +126,9 @@ function getFolders_in_dir(dir) {
                         entr.push(entry);
                     }
                 }
-            }, fail(e));
-        }, fail(e));
-    }, fail(e));
+            }, fail());
+        }, fail());
+    }, fail());
 
     return entr;
 }
@@ -144,9 +144,9 @@ function getFiles_in_dir(dir) {
                         entr.push(entry);
                     }
                 }
-            }, fail(e));
-        }, fail(e));
-    }, fail(e));
+            }, fail());
+        }, fail());
+    }, fail());
     
     return entr;
 }
