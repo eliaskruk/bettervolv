@@ -67,15 +67,15 @@ function getAll_in_dir(dir) {
             }, fail);
         }, fail);
     }, fail);
-    return inDirectory;
+    return inDirectory
 }
 
 function getFolders_in_dir(dir) {
-    inDirectory = new Array();
     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fs) {
         fs.root.getDirectory(dir, {}, function (dirEntry) {
             var dirReader = dirEntry.createReader();
             dirReader.readEntries(function (entries) {
+                inDirectory = new Array();
                 for (var i = 0; i < entries.length; i++) {
                     var entry = entries[i];
                     if (entry.isDirectory) {
@@ -85,20 +85,18 @@ function getFolders_in_dir(dir) {
             }, fail);
         }, fail);
     }, fail);
-    return inDirectory;
 }
 
 function getFiles_in_dir(dir) {
-    inDirectory = new Array();
     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fs) {
         fs.root.getDirectory(dir, {}, function (dirEntry) {
             var dirReader = dirEntry.createReader();
             dirReader.readEntries(function (entries) {
+                inDirectory = new Array();
                 for (var i = 0; i < entries.length; i++) {
                     var entry = entries[i];
                     if (entry.isFile) {
-                        var ignored = ["Thumbs.db", ".DS_Store"];
-                        if (!ignored.indexOf(entry.name)) {
+                        if (entry.name != "Thumbs.db" && entry.name != ".DS_Store") {
                             inDirectory.push(entry);
                         }
                     }
@@ -106,7 +104,6 @@ function getFiles_in_dir(dir) {
             }, fail);
         }, fail);
     }, fail);
-    return inDirectory;
 }
 
 function fail(e) {
@@ -114,6 +111,26 @@ function fail(e) {
 }
 
 function generar_galeria_videos() {
-    var videos = getFiles_in_dir("Volvo Assets/" + tipoMaquinaria + "/Videos");
-    var thumbs = getFiles_in_dir("Volvo Assets/" + tipoMaquinaria + "/Videos/Thumbnails");
+    getFiles_in_dir("Volvo Assets/" + tipoMaquinaria + "/Videos");
+    var videos = inDirectory;
+    getFiles_in_dir("Volvo Assets/" + tipoMaquinaria + "/Videos/Thumbnails");
+    var thumbs = inDirectory;
+    
+    videoPlayer.src = decodeURI(videos[0].nativeURL);
+    videoPlayer.poster = obtener_thumbs(videos[0].name, thumbs);
+
+    for (var i = 0; i < videos.length; i++) {
+        $("#videos .lista-videos").append('<li><a href="' + decodeURI(videos[i].nativeURL) + '"><img src="' + obtener_thumbs(videos[i].name, thumbs) + '" alt=""><span class="play-ss"></span></a></li>');
+    }
+}
+
+function obtener_thumbs(nombreVideo, thumbs) {
+    var nombSinExtension = nombreVideo.substring(nombreVideo.lastIndexOf("."), 0);
+
+    for (var i = 0; i < thumbs.length; i++) {
+        var nombreThumb = thumbs[i].name;
+        if (nombreThumb.indexOf(nombSinExtension) > -1) {
+            return nombreThumb;
+        }
+    }
 }
