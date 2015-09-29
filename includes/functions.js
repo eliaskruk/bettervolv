@@ -14,7 +14,7 @@ function eventListener() {
     $(".maquinas-content a.m-button").click(function (e) {
         e.preventDefault();
 
-        getImagenes("Volvo Assets/" + tipoMaquinaria + "/Imagenes/" + $(this).attr("href"));
+        getImagenes("Volvo Assets/" + tipoMaquinaria + "/Imagenes/" + $(this).attr("href") + "/FOTOS");
         $('#maquina .ui-content').css("visibility", "hidden");
 
         setTimeout(function () {
