@@ -5,7 +5,6 @@ function eventListener() {
     $('.maq-content').height(hm);
 
     $("#maquina").on("pageshow", function (event, ui) {
-        videos();
 
         var hc = ($(window).height() - $('#maquina .ui-header').height()) * 0.9;
         //mylog("HC = " + hc + " ---- WH = " + $(window).height() + " ---- HEADER = " + $('#maquina .ui-header').height());
@@ -55,29 +54,29 @@ function eventListener() {
 
 }
 
-function videos() {
-    var apppath_ = cordova.file.externalRootDirectory;
-    //alert('SD PATH: ' + apppath_);
-
-    window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
-    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
-}
-function gotFS(fileSystem) {
-    //var filePaht_ = fileSystem.root.fullPath;
-    //console.log(filePaht_);
-
-    var reader = fileSystem.root.createReader();
-    reader.readEntries(gotList, fail);
-}
-function gotList(entries) {
-    var i;
-    for (i = 0; i < entries.length; i++) {
-        console.log(entries[i]);
-    }
-}
-function fail(e) {
-    console.log(e);
-}
+//function videos() {
+//    var apppath_ = cordova.file.externalRootDirectory;
+//    //alert('SD PATH: ' + apppath_);
+//
+//    window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
+//    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
+//}
+//function gotFS(fileSystem) {
+//    //var filePaht_ = fileSystem.root.fullPath;
+//    //console.log(filePaht_);
+//
+//    var reader = fileSystem.root.createReader();
+//    reader.readEntries(gotList, fail);
+//}
+//function gotList(entries) {
+//    var i;
+//    for (i = 0; i < entries.length; i++) {
+//        console.log(entries[i]);
+//    }
+//}
+//function fail(e) {
+//    console.log(e);
+//}
 
 function getPhoneGapPath() {
     /*'use strict';*/
@@ -101,28 +100,57 @@ function mostrar_datos_tecnicos() {
 }
 
 
-function obtenetDir() {
+function getAll_in_dir(dir) {
+    var entr = new Array();
     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fs) {
-        fs.root.getDirectory('Volvo Assets', {}, function (dirEntry) {
+        fs.root.getDirectory(dir, {}, function (dirEntry) {
+            var dirReader = dirEntry.createReader();
+            dirReader.readEntries(function (entries) {
+                entr = entries;
+            }, fail(e));
+        }, fail(e));
+    }, fail(e));
+
+    return entr;
+}
+
+function getFolders_in_dir(dir) {
+    var entr = new Array();
+    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fs) {
+        fs.root.getDirectory(dir, {}, function (dirEntry) {
             var dirReader = dirEntry.createReader();
             dirReader.readEntries(function (entries) {
                 for (var i = 0; i < entries.length; i++) {
                     var entry = entries[i];
                     if (entry.isDirectory) {
-                        console.log('Directory: ' + entry.fullPath);
-                    }
-                    else if (entry.isFile) {
-                        console.log('File: ' + entry.fullPath);
+                        entr.push(entry);
                     }
                 }
+            }, fail(e));
+        }, fail(e));
+    }, fail(e));
 
-            }, function (e) {
-                console.log(e);
-            });
-        }, function (e) {
-            console.log(e);
-        });
-    }, function (error) {
-        alert(error.code);
-    });
+    return entr;
+}
+function getFiles_in_dir(dir) {
+    var entr = new Array();
+    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fs) {
+        fs.root.getDirectory(dir, {}, function (dirEntry) {
+            var dirReader = dirEntry.createReader();
+            dirReader.readEntries(function (entries) {
+                for (var i = 0; i < entries.length; i++) {
+                    var entry = entries[i];
+                    if (entry.isFile) {
+                        entr.push(entry);
+                    }
+                }
+            }, fail(e));
+        }, fail(e));
+    }, fail(e));
+    
+    return entr;
+}
+
+function fail(e) {
+    console.log(e);
 }
