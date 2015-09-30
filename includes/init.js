@@ -21,6 +21,7 @@ var videos = new Array();
 var thumbs = new Array();
 var video_galery = 0;
 var imagenes = new Array();
+var datos_tec = new Array();
 
 
 if (onweb) {

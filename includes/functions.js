@@ -24,6 +24,9 @@ function eventListener() {
         var nombreCarpeta = $(this).attr("data-value");
 
         getImagenes("Volvo Assets/" + tipoMaquinaria + "/Imagenes/" + nombreCarpeta + "/FOTOS");
+        getDatosTec("Volvo Assets/" + tipoMaquinaria + "/Imagenes/" + nombreCarpeta + "/DATOS TECNICOS");
+        
+        $(".visor-pdf img").attr("src", decodeURI(datos_tec.nativeURL))
 
         $('#maquina .ui-content').css("visibility", "hidden");
         $("#maquina .header-content h1").html(nombreCarpeta);
@@ -189,6 +192,24 @@ function getImagenes(dir) {
                     if (entry.isFile) {
                         if (entry.name != "Thumbs.db" && entry.name != ".DS_Store") {
                             imagenes.push(entry);
+                        }
+                    }
+                }
+            }, fail);
+        }, fail);
+    }, fail);
+}
+function getDatosTec(dir) {
+    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fs) {
+        fs.root.getDirectory(dir, {}, function (dirEntry) {
+            var dirReader = dirEntry.createReader();
+            dirReader.readEntries(function (entries) {
+                imagenes = new Array();
+                for (var i = 0; i < entries.length; i++) {
+                    var entry = entries[i];
+                    if (entry.isFile) {
+                        if (entry.name != "Thumbs.db" && entry.name != ".DS_Store") {
+                            datos_tec = entry;
                         }
                     }
                 }
