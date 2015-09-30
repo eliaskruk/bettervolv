@@ -26,7 +26,7 @@ function eventListener() {
         getImagenes("Volvo Assets/" + tipoMaquinaria + "/Imagenes/" + nombreCarpeta + "/FOTOS");
         getDatosTec("Volvo Assets/" + tipoMaquinaria + "/Imagenes/" + nombreCarpeta + "/DATOS TECNICOS");
         
-        $(".visor-pdf img").attr("src", decodeURI(datos_tec.nativeURL))
+        
 
         $('#maquina .ui-content').css("visibility", "hidden");
         $("#maquina .header-content h1").html(nombreCarpeta);
@@ -37,7 +37,9 @@ function eventListener() {
             for (var i = 0; i < imagenes.length; i++) {
                 $(".swiper-wrapper").append('<div class="swiper-slide"><img src="' + decodeURI(imagenes[i].nativeURL) + '" alt=""></div>');
             }
-
+            
+            $(".visor-pdf img").attr("src", decodeURI(datos_tec.nativeURL));
+            
             $.mobile.changePage("#maquina");
         }, 500);
     });
