@@ -290,6 +290,9 @@ a.ui-btn.m-button {
 #maquina .ui-content.datos-tecnicos.fullscreen .visor-pdf .btn-fullscreen{
     background-image: url("../imagenes/fullscreen-exit.png");
 }
+.trucks a.ui-btn.m-button {
+    width: 33%;
+} 
 @media screen and (max-width: 640px) {
     * {
         font-size: 14px;
