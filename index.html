@@ -20,26 +20,28 @@
         <script src="includes/init.js" type="text/javascript"></script>
 
     </head>
-    <body>
-        <!-- Additional required wrapper 
+    <body class="trucks">
         <div data-role="page" id="seleccionar">
             <div data-role="header" data-position="inline">
                 <div class="header-content">
-                    <h1>VIDEOS</h1>
+                    <h1>SELECCIONAR VEHICULO</h1>
                     <img class="ui-btn-right logo" src="imagenes/icon.png">
                 </div>
             </div>
             <div data-role="content">
-
-                <a href="#home" class="back"></a>
+                <br/>
+                <br/>
+                <button class="ui-btn" type="button" onclick="showTrucks();">TRUCKS</button>
+                <br/>
+                <button class="ui-btn" type="button" onclick="showConstructions();">CONSTRUCTIONS</button>
             </div>
         </div>
-        -->
         
         <div data-role="page" id="home">
             <div data-role="header" data-position="inline">
                 <div class="header-content">
-                    <h1>VOLVO CONSTRUCTION EQUIPMENT</h1>
+                    <h1 class="hide trucks">VOLVO TRUCKS</h1>
+                    <h1 class="hide construction">VOLVO CONSTRUCTION EQUIPMENT</h1>
                     <img class="ui-btn-right logo" src="imagenes/icon.png">
                 </div>
             </div>
@@ -70,7 +72,7 @@
                     </a>
                     <a class="ui-btn m-button" data-value="VM">
                         <div class="maq-content" style="background-image: url('imagenes/VM_6X4.jpg')">
-                            <h3>VM</h3>
+                            <h3>VM Vocacional</h3>
                         </div>
                     </a>
                 </div>
@@ -161,13 +163,18 @@
         <div data-role="page" id="brochure">
             <div data-role="header" data-position="inline">
                 <div class="header-content">
-                    <h1>VOLVO CONSTRUCTION EQUIPMENTT</h1>
+                    <h1 class="hide trucks">VOLVO TRUCKS</h1>
+                    <h1 class="hide construction">VOLVO CONSTRUCTION EQUIPMENT</h1>
                     <img class="ui-btn-right logo" src="imagenes/icon.png">
                 </div>
             </div>
             <div data-role="content">
                 <img class="icon-volvo" src="imagenes/icon2.png">
-                <p class="text">
+                <p class="text hide trucks">
+                    Se enviará un archivo PDF a su casilla de correo con la información más 
+                    completa sobre nuestras unidades Volvo Trucks.
+                </p>
+                <p class="text hide construction">
                     Se enviará un archivo PDF a su casilla de correo con la información más 
                     completa sobre nuestras unidades Volvo Construction Equipment.
                 </p>

@@ -1,11 +1,4 @@
 function eventListener() {
-    //Determinar el tipo de contenido
-    if (tipoMaquinaria == "Construction") {
-        $(".maquinas-content.construction").show();
-    } else {
-        $(".maquinas-content.trucks").show();
-    }
-
     mySwiper = new Swiper('.swiper-container', {
         // Optional parameters
         preloadImages: true,
@@ -389,4 +382,19 @@ function viewfullscreen() {
         fullscreen = 0;
     }
     mylog("fullscreen =" + fullscreen);
+}
+
+
+function showTrucks(){
+    tipoMaquinaria = "Trucks";
+    $("body").removeClass("construction").addClass("trucks");
+    
+    $.mobile.changePage("#home");
+}
+
+function showConstructions(){
+    tipoMaquinaria = "Construction";
+    $("body").removeClass("trucks").addClass("construction");
+    
+    $.mobile.changePage("#home");
 }
