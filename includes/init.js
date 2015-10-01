@@ -32,6 +32,7 @@ if (onweb) {
 } else {
     document.addEventListener("deviceready", onDeviceReady, false);
     document.addEventListener("backbutton", onBackKeyDown, false);
+    document.addEventListener('showkeyboard', onKeyboardShow, false);
 }
 
 
@@ -72,4 +73,10 @@ function onDeviceReady() {
     dbController.init("volvo");
 
     eventListener();
+}
+
+function onKeyboardShow(e) {
+    setTimeout(function () {
+        e.target.activeElement.scrollIntoViewIfNeeded()
+    }, 500); //needed timeout to wait for viewport to resize
 }
