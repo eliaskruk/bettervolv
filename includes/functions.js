@@ -99,17 +99,9 @@ function eventListener() {
 
         return false;
     });
-    
-    $(".header-content .logo").click(function(){
+
+    $(".header-content .logo").click(function () {
         serverSync();
-    });
-    
-    $(".btn-fullscreen").click(function(){
-        if ($("#maquina .ui-content.datos-tecnicos").hasClass("fullscreen")){
-            $("#maquina .ui-content.datos-tecnicos").removeClass("fullscreen");
-        }else{
-            $("#maquina .ui-content.datos-tecnicos").removeClass("fullscreen");
-        }
     });
 }
 
@@ -353,10 +345,10 @@ function openPopup(msg) {
 function mylog(cosa) {
     console.log(cosa);
 }
-function showLoading(){
+function showLoading() {
     return true;
 }
-function hideLoading(){
+function hideLoading() {
     return true;
 }
 
@@ -373,4 +365,16 @@ function validarDatosForm() {
     } else {
         return true;
     }
+}
+
+function viewfullscreen() {
+    
+    if (fullscreen == 0) {
+        $("#maquina .ui-content.datos-tecnicos").addClass("fullscreen");
+        fullscreen = 1;
+    } else {
+        $("#maquina .ui-content.datos-tecnicos").removeClass("fullscreen");
+        fullscreen = 0;
+    }
+    mylog("fullscreen =" + fullscreen);
 }

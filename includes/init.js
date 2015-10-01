@@ -22,6 +22,7 @@ var thumbs = new Array();
 var video_galery = 0;
 var imagenes = new Array();
 var datos_tec = new Array();
+var fullscreen = 0;
 
 if (onweb) {
     $(document).ready(function () {
