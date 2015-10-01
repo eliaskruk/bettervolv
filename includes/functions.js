@@ -82,8 +82,8 @@ function eventListener() {
         $('#brochure .ui-content').css("visibility", "visible");
     });
 
-    //getFilesVideos("Volvo Assets/" + tipoMaquinaria + "/Videos");
-    //getFilesThumbs("Volvo Assets/" + tipoMaquinaria + "/Videos/Thumbnails");
+    getFilesVideos("Volvo Assets/" + tipoMaquinaria + "/Videos");
+    getFilesThumbs("Volvo Assets/" + tipoMaquinaria + "/Videos/Thumbnails");
 
     $("#formulario").submit(function (e) {
         e.preventDefault();
