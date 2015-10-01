@@ -9,7 +9,7 @@ function eventListener() {
 
     var videoPlayer = document.getElementById("videoPlayer");
 
-    var hm = $(window).height() / 3.15;
+    var hm = $(window).height() / 3.25;
     $('.maq-content').height(hm);
 
     //MOSTRAR GALERIA DE IMAGENES MAQUINA
