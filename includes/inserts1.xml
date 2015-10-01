@@ -1,2 +1,3 @@
 <sql>
+    <statement>SELECT * FROM suscriptores</statement>
 </sql>

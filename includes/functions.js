@@ -84,7 +84,7 @@ function eventListener() {
     getFilesVideos("Volvo Assets/" + tipoMaquinaria + "/Videos");
     getFilesThumbs("Volvo Assets/" + tipoMaquinaria + "/Videos/Thumbnails");
 
-    $("#fomulario").on("submit", function (e) {
+    $("#formulario").submit(function (e) {
         e.preventDefault();
 
         if (validarDatosForm()) {
@@ -101,6 +101,14 @@ function eventListener() {
     
     $(".header-content .logo").click(function(){
         serverSync();
+    });
+    
+    $(".btn-fullscreen").click(function(){
+        if ($("#maquina .ui-content.datos-tecnicos").hasClass("fullscreen")){
+            $("#maquina .ui-content.datos-tecnicos").removeClass("fullscreen");
+        }else{
+            $("#maquina .ui-content.datos-tecnicos").removeClass("fullscreen");
+        }
     });
 }
 
@@ -343,6 +351,12 @@ function openPopup(msg) {
 }
 function mylog(cosa) {
     console.log(cosa);
+}
+function showLoading(){
+    return true;
+}
+function hideLoading(){
+    return true;
 }
 
 function validarDatosForm() {

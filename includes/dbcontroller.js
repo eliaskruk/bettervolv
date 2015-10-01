@@ -132,11 +132,11 @@ function successHandler(){
 }
 
 function successHandlerDump(){
-    closePopup();
+    //closePopup();
     $('#popup').removeClass('instalando');
 }
 function skipSuccessHandlerDump(){
-    closePopup();
+    //closePopup();
     $('#popup').removeClass('instalando');
     
 }

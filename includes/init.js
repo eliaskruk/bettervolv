@@ -23,10 +23,10 @@ var video_galery = 0;
 var imagenes = new Array();
 var datos_tec = new Array();
 
-
 if (onweb) {
     $(document).ready(function () {
-        eventListener();
+        onDeviceReady();
+        onBackKeyDown();
     });
 } else {
     document.addEventListener("deviceready", onDeviceReady, false);
@@ -57,6 +57,7 @@ function onBackKeyDown() {
 //    }
 }
 function onDeviceReady() {
+    console.log("creo DB");
     // Alert Bienvenida
     //navigator.notification.alert("Este es un prototipo de la aplicación. Los datos no son reales y las funcionalidades no se encuentran implementadas.hayekipo_");
     //alert("Este es un prototipo de la aplicación. Los datos no son reales y las funcionalidades no se encuentran implementadas.");
