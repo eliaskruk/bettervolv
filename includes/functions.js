@@ -136,6 +136,7 @@ function generar_galeria_videos() {
         e.preventDefault();
         videoPlayer.src = $(this).attr("href");
         videoPlayer.poster = $(this).find("img").attr("src");
+        videoPlayer.play();
         return false;
     });
 }
