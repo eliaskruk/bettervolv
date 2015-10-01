@@ -67,7 +67,7 @@ function eventListener() {
     });
     $("#videos").on("pagehide", function (event, ui) {
         videoPlayer.pause();
-        videoPlayer.currentTime= 0;
+        videoPlayer.currentTime = 0;
     });
     $("#brochure").on("pageshow", function (event, ui) {
         var hc = ($(window).height() - $('#brochure .ui-header').height()) * 0.87;
@@ -75,9 +75,6 @@ function eventListener() {
         $('#brochure .ui-content').height(hc);
         $('#brochure .ui-content').css("visibility", "visible");
     });
-
-    getFilesVideos("Volvo Assets/" + tipoMaquinaria + "/Videos");
-    getFilesThumbs("Volvo Assets/" + tipoMaquinaria + "/Videos/Thumbnails");
 
     $("#formulario").submit(function (e) {
         e.preventDefault();
@@ -384,16 +381,22 @@ function viewfullscreen() {
 }
 
 
-function showTrucks(){
+function showTrucks() {
     tipoMaquinaria = "Trucks";
     $("body").removeClass("construction").addClass("trucks");
-    
+
+    getFilesVideos("Volvo Assets/" + tipoMaquinaria + "/Videos");
+    getFilesThumbs("Volvo Assets/" + tipoMaquinaria + "/Videos/Thumbnails");
+
     $.mobile.changePage("#home");
 }
 
-function showConstructions(){
+function showConstructions() {
     tipoMaquinaria = "Construction";
     $("body").removeClass("trucks").addClass("construction");
-    
+
+    getFilesVideos("Volvo Assets/" + tipoMaquinaria + "/Videos");
+    getFilesThumbs("Volvo Assets/" + tipoMaquinaria + "/Videos/Thumbnails");
+
     $.mobile.changePage("#home");
 }
