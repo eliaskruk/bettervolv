@@ -32,9 +32,7 @@ if (onweb) {
 } else {
     document.addEventListener("deviceready", onDeviceReady, false);
     document.addEventListener("backbutton", onBackKeyDown, false);
-    window.addEventListener('native.keyboardshow', keyboardShowHandler);
-    window.addEventListener('native.keyboardhide', keyboardHideHandler);
-    //document.addEventListener('showkeyboard', onKeyboardShow, false);
+    document.addEventListener('showkeyboard', onKeyboardShow, false);
 }
 
 
@@ -81,14 +79,4 @@ function onKeyboardShow(e) {
     setTimeout(function () {
         e.target.activeElement.scrollIntoViewIfNeeded()
     }, 500); //needed timeout to wait for viewport to resize
-}
-
-
-
-function keyboardShowHandler(e){
-    $("body").addClass("keyboardOn");
-}
-// This event fires when the keyboard will show
-function keyboardHideHandler(e){
-    $("body").removeClass("keyboardOn");
 }

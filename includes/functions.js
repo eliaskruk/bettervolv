@@ -103,6 +103,16 @@ function eventListener() {
     $(".header-content .logo").click(function () {
         serverSync();
     });
+
+
+    $("input[type='text']").on("keypress", function (event) {
+        if (event.keyCode === 13) {
+            if (this.value.length == this.maxLength) {
+                $(this).next('.inputs').focus();
+            }
+            event.preventDefault();
+        }
+    });
 }
 
 function cargarSlider() {
@@ -370,7 +380,7 @@ function validarDatosForm() {
 }
 
 function viewfullscreen() {
-    
+
     if (fullscreen == 0) {
         $("#maquina .ui-content.datos-tecnicos").addClass("fullscreen");
         fullscreen = 1;
