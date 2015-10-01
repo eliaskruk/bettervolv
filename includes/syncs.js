@@ -27,7 +27,7 @@ function serverSync(){
                         url: responseUrl,
                         type: "POST", 
                         cache: false, 
-                        dataType: 'jsonp',
+                        dataType: 'json',
                         callback: 'callback',
                         data: 'action=sync&forsync='+JSON.stringify(forsync)+'&sync=true',
                         success: function(data){ 
