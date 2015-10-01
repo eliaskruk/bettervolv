@@ -44,7 +44,6 @@ function serverSync(){
                             if(sw){
                                 updateDB("DELETE FROM `syncs` WHERE id IN (0"+oks+")");
                                 mylog("DELETE FROM `syncs` WHERE id IN (0"+oks+")");
-                                
                             }
                             openPopup("Se enviaron los registros al servidor.");
                         },beforeSend: function() {
