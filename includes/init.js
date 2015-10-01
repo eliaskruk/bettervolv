@@ -14,8 +14,8 @@ var uploadInterval = null;
 var showInterval = null;
 var actualizando = null;
 
-var tipoMaquinaria = "Trucks";
-//var tipoMaquinaria = "Construction";
+//var tipoMaquinaria = "Trucks";
+var tipoMaquinaria = "Construction";
 var inDirectory = new Array();
 var videos = new Array();
 var thumbs = new Array();
