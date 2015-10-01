@@ -67,6 +67,7 @@ function eventListener() {
     });
     $("#videos").on("pagehide", function (event, ui) {
         videoPlayer.pause();
+        videoPlayer.currentTime= 0;
     });
     $("#brochure").on("pageshow", function (event, ui) {
         var hc = ($(window).height() - $('#brochure .ui-header').height()) * 0.87;
@@ -140,8 +141,6 @@ function generar_galeria_videos() {
         e.preventDefault();
         videoPlayer.src = $(this).attr("href");
         videoPlayer.poster = $(this).find("img").attr("src");
-        videoPlayer.currentTime = 0;
-        videoPlayer.load();
         videoPlayer.play();
         return false;
     });
