@@ -29,7 +29,7 @@ function serverSync(){
                         cache: false, 
                         dataType: 'jsonp',
                         callback: 'callback',
-                        data: '&action=sync&forsync='+JSON.stringify(forsync)+'&sync=true',
+                        data: 'action=sync&forsync='+JSON.stringify(forsync)+'&sync=true',
                         success: function(data){ 
                             mylog('success');
                             mylog(data.content);
