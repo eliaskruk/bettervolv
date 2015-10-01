@@ -6,15 +6,15 @@
     color: #5e5e5e;
 }
 
-.ui-mobile, .ui-mobile body{
+/*.ui-mobile, .ui-mobile body{
     overflow: hidden;
-}
+}*/
 .ui-header, .ui-footer{
     border: none;
 }
-.ui-mobile .ui-page-active {
+/*.ui-mobile .ui-page-active {
     overflow: hidden;
-}
+}*/
 .ui-content {
     margin: 0 4%;
     padding: 0;

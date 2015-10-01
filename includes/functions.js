@@ -76,7 +76,7 @@ function eventListener() {
         videoPlayer.pause();
     });
     $("#brochure").on("pageshow", function (event, ui) {
-        var hc = ($(window).height() - $('#brochure .ui-header').height()) * 0.9;
+        var hc = ($(window).height() - $('#brochure .ui-header').height()) * 0.87;
         //mylog("HC = " + hc + " ---- WH = " + $(window).height() + " ---- HEADER = " + $('#videos .ui-header').height());
         $('#brochure .ui-content').height(hc);
         $('#brochure .ui-content').css("visibility", "visible");
