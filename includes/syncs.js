@@ -1,21 +1,16 @@
 function queueSync(func, data){
     updateDB("INSERT INTO `syncs`(`func`, `vals`) VALUES ('"+func+"','"+data+"')");
-    //serverSync();
 }
 function serverSync(){
     mylog('serverSync');
     if(checkConnect() && !srvsyncing){
         syncing=true;
         srvsyncing=true;
-        var query = "SELECT * FROM `syncs` limit 10";
+        var query = "SELECT * FROM `syncs`";
         
         db.transaction(function(tx){
             tx.executeSql(query, [], function(tx, results){
                 if(results.rows.length > 0){
-                    var more ="";
-                    if(results.rows.length>=10){
-                        more ="Sincronizacion parcial, pueden existir mas registros por sincronizar.";
-                    }
                     mylog(results.rows);
                     i = 0;
                     var forsync= new Array();
@@ -51,7 +46,7 @@ function serverSync(){
                                 mylog("DELETE FROM `syncs` WHERE id IN (0"+oks+")");
                                 
                             }
-                            openPopup("Registros correctamente actualizados. "+more);
+                            openPopup("Se enviaron los registros al servidor.");
                         },beforeSend: function() {
                             mylog('beforeSend');
                             showLoading();
@@ -59,7 +54,7 @@ function serverSync(){
                         complete: function() {
                             mylog('complete');
                             syncing=false;
-                            srvsyncing=false;openPopup
+                            srvsyncing=false;
                             hideLoading();
                         },
                         error: function (obj, textStatus, errorThrown) {

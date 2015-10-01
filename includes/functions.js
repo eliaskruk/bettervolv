@@ -36,7 +36,7 @@ function eventListener() {
         setTimeout(function () {
             if (imagenes.length == 0) {
                 getImagenes("Volvo Assets/" + tipoMaquinaria + "/Imagenes/" + nombreCarpeta + "/FOTOS");
-                
+
                 setTimeout(function () {
                     cargarSlider();
                 }, 1000);
@@ -83,6 +83,25 @@ function eventListener() {
 
     getFilesVideos("Volvo Assets/" + tipoMaquinaria + "/Videos");
     getFilesThumbs("Volvo Assets/" + tipoMaquinaria + "/Videos/Thumbnails");
+
+    $("#fomulario").on("submit", function (e) {
+        e.preventDefault();
+
+        if (validarDatosForm()) {
+            updateDB_callback("INSERT INTO suscriptores(`nombre`, `email`, `empresa`, `tipo`) VALUES (" + cleanField($('#nombre').val()) + ", " + cleanField($('#email').val()) + ", " + cleanField($('#empresa').val()) + ", " + tipoMaquinaria + ")",
+                    function () {
+                        queueSync('brochure', JSON.stringify({nombre: $('#nombre').val(), email: $('#email').val(), empresa: $('#empresa').val(), tipo: tipoMaquinaria}));
+                        $('#nombre, #email, #empresa').val('');
+                        openPopup("Gracias por suscribirse!");
+                    });
+        }
+
+        return false;
+    });
+    
+    $(".header-content .logo").click(function(){
+        serverSync();
+    });
 }
 
 function cargarSlider() {
@@ -94,12 +113,6 @@ function cargarSlider() {
 
     $.mobile.changePage("#maquina");
 }
-function openPopup(msg) {
-    alert(msg);
-}
-function mylog(cosa) {
-    console.log(cosa);
-}
 
 function mostrar_galeria() {
     $("#maquina .ui-content").removeClass("datos-tecnicos").addClass("galeria");
@@ -107,6 +120,35 @@ function mostrar_galeria() {
 
 function mostrar_datos_tecnicos() {
     $("#maquina .ui-content").removeClass("galeria").addClass("datos-tecnicos");
+}
+
+function generar_galeria_videos() {
+    videoPlayer.src = decodeURI(videos[0].nativeURL);
+    videoPlayer.poster = obtener_thumbs(videos[0].name, thumbs);
+
+    for (var i = 0; i < videos.length; i++) {
+        $("#videos .lista-videos").append('<li><a href="' + decodeURI(videos[i].nativeURL) + '"><img src="' + obtener_thumbs(videos[i].name, thumbs) + '" alt=""><span class="play-ss"></span></a></li>');
+    }
+
+    $('#videos .ui-content').css("visibility", "visible");
+
+    $(".lista-videos a").click(function (e) {
+        e.preventDefault();
+        videoPlayer.src = $(this).attr("href");
+        videoPlayer.poster = $(this).find("img").attr("src");
+        return false;
+    });
+}
+
+function obtener_thumbs(nombreVideo, thumbs) {
+    var nombSinExtension = nombreVideo.substring(nombreVideo.lastIndexOf("."), 0);
+
+    for (var i = 0; i < thumbs.length; i++) {
+        var nombreThumb = thumbs[i].name;
+        if (nombreThumb.indexOf(nombSinExtension) > -1) {
+            return decodeURI(thumbs[i].nativeURL);
+        }
+    }
 }
 
 function getAll_in_dir(dir) {
@@ -231,36 +273,88 @@ function getDatosTec(dir) {
     }, fail);
 }
 
-
 function fail(e) {
     console.log(e);
 }
 
-function generar_galeria_videos() {
-    videoPlayer.src = decodeURI(videos[0].nativeURL);
-    videoPlayer.poster = obtener_thumbs(videos[0].name, thumbs);
+//si un objeto está vacío
+function is_empty(obj) {
 
-    for (var i = 0; i < videos.length; i++) {
-        $("#videos .lista-videos").append('<li><a href="' + decodeURI(videos[i].nativeURL) + '"><img src="' + obtener_thumbs(videos[i].name, thumbs) + '" alt=""><span class="play-ss"></span></a></li>');
+    // null and undefined are empty
+    if (obj == null)
+        return true;
+    // Assume if it has a length property with a non-zero value
+    // that that property is correct.
+    if (obj.length && obj.length > 0)
+        return false;
+    if (obj.length === 0)
+        return true;
+
+    for (var key in obj) {
+        if (hasOwnProperty.call(obj, key))
+            return false;
     }
 
-    $('#videos .ui-content').css("visibility", "visible");
+    return true;
+}
+function checkConnect() {//return false;
+    if (onweb) {
+        return true;
+    }
+    try {
+        if (navigator.connection.type != Connection.NONE) {
+            return true;
+        } else {
+            showErroresConexion();
+            return false;
+        }
+    } catch (e) {
+        mylog(e);
+    }
+}
+Number.isInteger = Number.isInteger || function (value) {
+    return typeof value === "number" &&
+            isFinite(value) &&
+            Math.floor(value) === value;
+};
 
-    $(".lista-videos a").click(function (e) {
-        e.preventDefault();
-        videoPlayer.src = $(this).attr("href");
-        videoPlayer.poster = $(this).find("img").attr("src");
-        return false;
-    });
+function cleanField(field) {
+    var trimeado = $.trim(field);
+    //if(field*1==trimeado){
+
+    if (Number.isInteger(field)) {
+        return "'" + (field) + "'";
+    } else {
+        if (trimeado == '' || trimeado == null || trimeado == 'null' || trimeado == undefined || trimeado == 'undefined') {
+            return "null";
+        } else {
+            return "'" + field + "'";
+        }
+    }
+}
+function validateEmail($email) {
+    var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+    return emailReg.test($email);
 }
 
-function obtener_thumbs(nombreVideo, thumbs) {
-    var nombSinExtension = nombreVideo.substring(nombreVideo.lastIndexOf("."), 0);
+function openPopup(msg) {
+    alert(msg);
+}
+function mylog(cosa) {
+    console.log(cosa);
+}
 
-    for (var i = 0; i < thumbs.length; i++) {
-        var nombreThumb = thumbs[i].name;
-        if (nombreThumb.indexOf(nombSinExtension) > -1) {
-            return decodeURI(thumbs[i].nativeURL);
-        }
+function validarDatosForm() {
+    if ($.trim($('#nombre').val()) == '') {
+        openPopup('Ingrese un nombre.');
+        return false;
+    } else if (!validateEmail($('#email').val()) || $.trim($('#email').val()) == '') {
+        openPopup('Ingrese un e-mail válido.');
+        return false;
+    } else if ($.trim($('#empresa').val()) == '') {
+        openPopup('Ingrese una empresa.');
+        return false;
+    } else {
+        return true;
     }
 }

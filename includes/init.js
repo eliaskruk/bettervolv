@@ -3,10 +3,9 @@ var syncing = false;
 var srvsyncing = false;
 var dbController = null;
 var onweb = false;
-var pathSD = "file:///storage/sdcard1";
 var popup_opened = true;
-var siteUrl = 'http://thepastoapps.com/proyectos/pumas/';
-var responseUrl = siteUrl + 'response.php';
+var siteUrl = 'http://thepastoapps.com/proyectos/volvoservice/';
+var responseUrl = siteUrl + 'service.php';
 var timeoutID = null;
 var downloadTimeout = null;
 var downloadInterval = null;
@@ -15,6 +14,7 @@ var uploadInterval = null;
 var showInterval = null;
 var actualizando = null;
 
+//var tipoMaquinaria = "Trucks";
 var tipoMaquinaria = "Construction";
 var inDirectory = new Array();
 var videos = new Array();
@@ -66,8 +66,8 @@ function onDeviceReady() {
     $.ajaxSetup({cache: false});
 
     /* Insert Inicial*/
-    //dbController = new DBController();
-    //dbController.init("pumas");
+    dbController = new DBController();
+    dbController.init("volvo");
 
     eventListener();
 }
